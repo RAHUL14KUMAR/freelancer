@@ -37,7 +37,7 @@ const addCourse=expressAsyncHandler(async(req,res)=>{
 })
 
 
-// updtae the courses by id
+// update the courses by id
 const updateCourse=expressAsyncHandler(async(req,res)=>{
     try{
         const id=req.params.courseId;
@@ -46,7 +46,7 @@ const updateCourse=expressAsyncHandler(async(req,res)=>{
             const courses=await course.findByIdAndUpdate(id,{$set:req.body},{new:true});
             await courses.save();
 
-            res.status(200).json("course has been updated");
+            res.status(200).json(courses);
         }
     }catch(error){
         console.log(error);
